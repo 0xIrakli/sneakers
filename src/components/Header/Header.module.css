@@ -1,62 +1,105 @@
-.header {
-	margin-top: 2.8rem;
-	margin-inline: 11vw;
+.container {
+	padding-inline: 15vw;
+	padding-bottom: 0.3rem;
+}
 
+.header {
 	display: flex;
-	justify-content: right;
-	align-items: top;
+	justify-content: center;
+	align-items: center;
 	gap: 3.5rem;
 
-	outline-offset: 4rem;
 	border-bottom: 1px solid var(--secondary-light);
 }
 
-.header > div {
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
-	gap: 2.9rem;
+.logo {
+	/* galaxy foldis gamo */
+	width: clamp(110px, 14vw, 140px);
 }
 
 .nav {
 	display: flex;
-	margin-right: auto;
+	justify-content: center;
 	gap: 2rem;
 }
 
-.nav a {
-	font-size: 0.94rem;
-	padding-bottom: 2.9rem;
+.nav > a {
+	padding-block: 2.55rem;
 	border-bottom: 4px solid transparent;
-	transition: 0.15s;
+	transition: 0.1s;
 }
 
-.nav a:hover {
-	color: var(--header);
+.nav > a:hover {
 	border-bottom: 4px solid var(--primary);
 }
 
-.header button {
+.flexEnd {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	gap: 3vw;
+	margin-left: auto;
+}
+
+.flexEnd button {
 	border: none;
 	background: transparent;
+}
+
+.flexEnd button:hover {
 	cursor: pointer;
-	height: fit-content;
 }
 
-.header .profile {
-	/* \/ rom ar gamodzravdes hoveris dros*/
-	border: 2px solid transparent;
+.flexEnd .profile {
 	border-radius: 100px;
-	height: 3.125rem;
-
+	border: 2px solid transparent;
 	transition: 0.1s;
-	translate: 0% -25%;
 }
 
-.header .profile:hover {
+.flexEnd .profile:hover {
 	border: 2px solid var(--primary);
 }
 
-.header .profile > img {
-	height: 100%;
+.flexEnd .profile img {
+	height: 3.125rem;
+}
+
+.hamburger {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.hamburger > span {
+	background-color: var(--secondary);
+	width: 1.5rem;
+	height: 4px;
+}
+
+@media screen and (max-width: 1150px) {
+	.container {
+		padding-inline: 5vw;
+		border-bottom: 1px solid var(--secondary-light);
+	}
+
+	.header {
+		gap: 5%;
+		padding-block: 1.25rem;
+		border: none;
+	}
+
+	.nav {
+		display: none;
+	}
+
+	.hamburger {
+		display: flex;
+	}
+
+	.flexEnd .profile img {
+		height: 2.2rem;
+	}
 }
