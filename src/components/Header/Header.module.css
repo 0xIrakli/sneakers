@@ -1,5 +1,5 @@
-.container {
-	padding-inline: 15vw;
+.headerContainer {
+	padding-inline: 10.3vw;
 	padding-bottom: 0.3rem;
 }
 
@@ -80,7 +80,7 @@
 }
 
 @media screen and (max-width: 1150px) {
-	.container {
+	.headerContainer {
 		padding-inline: 5vw;
 		border-bottom: 1px solid var(--secondary-light);
 	}

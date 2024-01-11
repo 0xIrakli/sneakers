@@ -1,3 +1,1 @@
 # Sneakers product page 👟
-
-Assignment

@@ -22,6 +22,15 @@ p {
 	font-weight: 400;
 }
 
+p strong {
+	color: var(--header);
+	font-weight: 700;
+}
+
 img {
 	display: block;
+}
+
+ul {
+	list-style: none;
 }
