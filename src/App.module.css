@@ -1,0 +1,16 @@
+.reviewSection {
+	padding-inline: 12vw;
+}
+
+.reviewSection > h1 {
+	font-size: 1.875rem;
+	font-weight: 700;
+	line-height: 3rem;
+	margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 1150px) {
+	.reviewSection {
+		padding-inline: 1.5rem;
+	}
+}

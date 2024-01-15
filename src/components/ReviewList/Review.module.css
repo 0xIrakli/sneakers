@@ -1,0 +1,39 @@
+.reviewContainer {
+	display: flex;
+	align-items: start;
+	gap: 1.4rem;
+
+	max-width: 41.5rem;
+}
+
+.reviewContainer h1 {
+	font-size: 1rem;
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+
+.details > div {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.details > div > h1 {
+	margin-right: auto;
+}
+
+.details .editButton {
+	background: transparent;
+	border: none;
+
+	color: black;
+	text-decoration: underline;
+
+	margin-right: 0.9rem;
+	translate: 0% -40%;
+
+	cursor: pointer;
+}
