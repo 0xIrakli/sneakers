@@ -3,16 +3,24 @@ import styles from './Stars.module.css'
 
 // Star-s sxvagan arsad ar viyenebt amitom gvaqvs <li> Star componentshi da ara Stars componentshi
 
-const Star = ({ index, setCount, setDrawCount, isEditable, isFull }) => {
+const Star = ({
+	index,
+	setCount,
+	setDrawCount,
+	isEditable,
+	isFull,
+	starSize,
+}) => {
 	return (
 		<button
 			className={isEditable ? styles.hoverable : ''}
+			type="button"
 			onClick={() => setCount(index + 1)}
 			onMouseOver={() => isEditable && setDrawCount(index + 1)}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
+				width={starSize}
+				height={starSize}
 				viewBox="0 0 24 24"
 				fill={isFull ? '#FAD409' : 'transparent'}
 				stroke={isFull ? 'none' : '#616161'}
@@ -28,7 +36,12 @@ const Star = ({ index, setCount, setDrawCount, isEditable, isFull }) => {
 // tu ar gvchirdeba rom icvlebodes mashin mivawvdit marto counts rogorc cifrs
 // tu gvinda rom editable iyos mashin mivawvdit count-s da setCounts,
 
-const Stars = ({ count, setCount = null, maxCount = 5 }) => {
+const Stars = ({
+	count,
+	setCount = null,
+	maxCount = 5,
+	starSize = '1.45rem',
+}) => {
 	const editable = setCount !== null
 	const [drawCount, setDrawCount] = useState(count)
 
@@ -40,6 +53,7 @@ const Stars = ({ count, setCount = null, maxCount = 5 }) => {
 				<Star
 					key={index}
 					index={index}
+					starSize={starSize}
 					setCount={setCount}
 					setDrawCount={setDrawCount}
 					isEditable={editable}
