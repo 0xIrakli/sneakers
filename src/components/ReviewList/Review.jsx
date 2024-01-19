@@ -3,7 +3,13 @@ import ProfilePlaceholder from '../../assets/user-placeholder.png'
 import Stars from '../Stars/Stars'
 import { useState } from 'react'
 
-const Review = ({ reviewData, currentUser }) => {
+const Review = ({
+	reviewData,
+	reviews,
+	setReviews,
+	setWritingReview,
+	currentUser,
+}) => {
 	const isFromCurrentUser = reviewData.user === currentUser.name
 
 	return (
@@ -14,8 +20,20 @@ const Review = ({ reviewData, currentUser }) => {
 					<h1>{reviewData.user}</h1>
 					{isFromCurrentUser && (
 						<>
-							<button className={styles.editButton}>Delete</button>
-							<button className={styles.editButton}>Edit</button>
+							<button
+								className={styles.editButton}
+								onClick={() =>
+									setReviews(
+										[...reviews].filter((review) => review !== reviewData)
+									)
+								}>
+								Delete
+							</button>
+							<button
+								className={styles.editButton}
+								onClick={() => setWritingReview('editing')}>
+								Edit
+							</button>
 						</>
 					)}
 				</div>

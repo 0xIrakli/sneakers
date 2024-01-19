@@ -1,16 +1,62 @@
 .reviewSection {
-	padding-inline: 12vw;
+	padding-inline: 12.5vw;
 }
 
-.reviewSection > h1 {
+.reviewSection > div {
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+}
+
+.reviewSection > div h1 {
 	font-size: 1.875rem;
 	font-weight: 700;
 	line-height: 3rem;
 	margin-bottom: 2rem;
 }
 
+.writeReviewButton {
+	background-color: var(--primary);
+	border: none;
+	border-radius: 0.625rem;
+
+	color: white;
+	font-weight: 700;
+
+	padding: 0.85rem 4rem;
+	margin-inline: 1rem;
+
+	cursor: pointer;
+}
+
+.writeReviewButton .longText {
+	display: initial;
+}
+
+.writeReviewButton .shortText {
+	display: none;
+}
+
 @media screen and (max-width: 1150px) {
 	.reviewSection {
-		padding-inline: 1.5rem;
+		padding: 0.75rem 2rem;
+	}
+
+	.reviewSection > div h1 {
+		font-size: 1.4rem;
+	}
+
+	.writeReviewButton {
+		padding-inline: 2rem;
+	}
+
+	.writeReviewButton .longText {
+		display: none;
+	}
+
+	.writeReviewButton .shortText {
+		display: initial;
 	}
 }

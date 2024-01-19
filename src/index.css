@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700&display=swap');
 
 :root {
 	--primary: hsl(26, 100%, 55%);
@@ -6,6 +6,12 @@
 	--header: #1d2026;
 	--secondary: #69707d;
 	--secondary-light: #e4e9f2;
+	--secondary-light2: #b6b6b6;
+	--error: #ff3d3d;
+}
+
+body {
+	padding-bottom: 6.6rem;
 }
 
 * {
@@ -20,7 +26,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+label {
 	color: var(--header);
 }
 
