@@ -1,0 +1,26 @@
+.stars {
+	display: flex;
+	align-items: center;
+	gap: 0.1rem;
+}
+
+/* ??????????? https://stackoverflow.com/questions/7774814/remove-white-space-below-image */
+
+.stars button {
+	background: transparent;
+	border: none;
+	font-size: 0;
+}
+
+.stars .hoverable {
+	cursor: pointer;
+	transition: 0.05s;
+}
+
+button.hoverable:hover {
+	scale: 1.3;
+}
+
+button.hoverable:active {
+	scale: 1.2;
+}

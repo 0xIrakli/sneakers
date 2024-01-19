@@ -1,5 +1,7 @@
 import styles from './Review.module.css'
 import ProfilePlaceholder from '../../assets/user-placeholder.png'
+import Stars from '../Stars/Stars'
+import { useState } from 'react'
 
 const Review = ({ reviewData, currentUser }) => {
 	const isFromCurrentUser = reviewData.user === currentUser.name
@@ -8,7 +10,7 @@ const Review = ({ reviewData, currentUser }) => {
 		<li className={styles.reviewContainer}>
 			<img src={ProfilePlaceholder} />
 			<div className={styles.details}>
-				<div>
+				<div className={styles.controls}>
 					<h1>{reviewData.user}</h1>
 					{isFromCurrentUser && (
 						<>
@@ -17,7 +19,7 @@ const Review = ({ reviewData, currentUser }) => {
 						</>
 					)}
 				</div>
-				<p>{reviewData.starRating} stars</p>
+				<Stars count={reviewData.starRating} />
 				<h1>{reviewData.headline}</h1>
 				<p>{reviewData.writtenReview}</p>
 			</div>
