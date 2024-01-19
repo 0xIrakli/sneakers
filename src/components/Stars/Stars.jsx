@@ -15,7 +15,7 @@ const Star = ({
 		<button
 			className={isEditable ? styles.hoverable : ''}
 			type="button"
-			onClick={() => setCount(index + 1)}
+			onClick={() => isEditable && setCount(index + 1)}
 			onMouseOver={() => isEditable && setDrawCount(index + 1)}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -41,6 +41,7 @@ const Stars = ({
 	setCount = null,
 	maxCount = 5,
 	starSize = '1.45rem',
+	starGap = '0.1rem',
 }) => {
 	const editable = setCount !== null
 	const [drawCount, setDrawCount] = useState(count)
@@ -48,6 +49,7 @@ const Stars = ({
 	return (
 		<div
 			className={styles.stars}
+			style={{ gap: starGap }}
 			onMouseLeave={() => editable && setDrawCount(count)}>
 			{[...Array(maxCount)].map((_, index) => (
 				<Star

@@ -1,7 +1,7 @@
 .stars {
 	display: flex;
 	align-items: center;
-	gap: 0.1rem;
+	gap: 0.4rem;
 }
 
 /* ??????????? https://stackoverflow.com/questions/7774814/remove-white-space-below-image */
