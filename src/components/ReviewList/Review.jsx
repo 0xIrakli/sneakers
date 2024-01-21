@@ -5,8 +5,7 @@ import { useState } from 'react'
 
 const Review = ({
 	reviewData,
-	reviews,
-	setReviews,
+	deleteReview,
 	setWritingReview,
 	currentUser,
 }) => {
@@ -22,11 +21,7 @@ const Review = ({
 						<>
 							<button
 								className={styles.editButton}
-								onClick={() =>
-									setReviews(
-										[...reviews].filter((review) => review !== reviewData)
-									)
-								}>
+								onClick={() => deleteReview(reviewData.user)}>
 								Delete
 							</button>
 							<button

@@ -15,16 +15,18 @@ const schema = object({
 })
 
 const ReviewForm = ({
-	initialValues = {
-		starRating: 0,
-		headline: '',
-		writtenReview: '',
-	},
 	currentUser,
 	reviews,
 	setReviews,
 	setWritingReview,
 	isEditing,
+	initialValues = reviews.filter(
+		(review) => review.user == currentUser.name
+	)[0] || {
+		starRating: 0,
+		headline: '',
+		writtenReview: '',
+	},
 }) => {
 	const submitForm = (values, submitProps) => {
 		setWritingReview('')
@@ -47,6 +49,7 @@ const ReviewForm = ({
 			initialValues={initialValues}
 			validationSchema={schema}
 			onSubmit={submitForm}
+			validateOnBlur={false}
 			validateOnChange={false}>
 			{(formik) => {
 				return (

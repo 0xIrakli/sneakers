@@ -15,28 +15,6 @@ function App() {
 		'': 'Customer reviews',
 	}
 
-	const reviewForm = (
-		<ReviewForm
-			initialValues={
-				reviews.filter((review) => review.user == currentUser.name)[0]
-			}
-			currentUser={currentUser}
-			reviews={reviews}
-			setReviews={setReviews}
-			setWritingReview={setWritingReview}
-			isEditing={writingReview === 'editing'}
-		/>
-	)
-
-	const reviewList = (
-		<ReviewList
-			reviews={reviews}
-			setReviews={setReviews}
-			currentUser={currentUser}
-			setWritingReview={setWritingReview}
-		/>
-	)
-
 	return (
 		<>
 			<Header currentUser={currentUser} />
@@ -52,7 +30,22 @@ function App() {
 						</button>
 					)}
 				</div>
-				{writingReview !== '' ? reviewForm : reviewList}
+				{writingReview !== '' ? (
+					<ReviewForm
+						currentUser={currentUser}
+						reviews={reviews}
+						setReviews={setReviews}
+						setWritingReview={setWritingReview}
+						isEditing={writingReview === 'editing'}
+					/>
+				) : (
+					<ReviewList
+						reviews={reviews}
+						setReviews={setReviews}
+						currentUser={currentUser}
+						setWritingReview={setWritingReview}
+					/>
+				)}
 			</section>
 		</>
 	)
