@@ -1,0 +1,38 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+	max-width: 9.8rem;
+
+	padding: 1.2rem 0.8rem;
+	background-color: var(--secondary-light1);
+	border-radius: 0.625rem;
+}
+
+.container button {
+	background-color: transparent;
+	border: none;
+
+	/* hitbox */
+	padding: 0.25rem;
+
+	cursor: pointer;
+	line-height: 0;
+}
+
+.container h1 {
+	font-size: 1rem;
+}
+
+.container .icon {
+	width: 0.75rem;
+	user-select: none;
+}
+
+@media screen and (max-width: 1200px) {
+	.container {
+		max-width: unset;
+	}
+}

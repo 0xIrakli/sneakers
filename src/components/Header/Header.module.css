@@ -79,7 +79,7 @@
 	height: 4px;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1200px) {
 	.headerContainer {
 		padding-inline: 5vw;
 		border-bottom: 1px solid var(--secondary-light);

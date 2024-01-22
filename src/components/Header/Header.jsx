@@ -31,22 +31,7 @@ const Profile = ({ currentUser }) => {
 	)
 }
 
-function Header({ currentUser = null }) {
-	const [cart, setCart] = useState([
-		{
-			name: 'Fall Limited Edition Sneakers',
-			price: 125.0,
-			count: 3.0,
-			thumbnail: assetsBaseUrl + 'image-product-1-thumbnail.jpg',
-		},
-		{
-			name: 'Fall Limited Edition Sneakers',
-			price: 121235.0,
-			count: 3.0,
-			thumbnail: assetsBaseUrl + 'image-product-1-thumbnail.jpg',
-		},
-	])
-
+function Header({ cart, setCart, currentUser = null }) {
 	return (
 		<div className={styles.headerContainer}>
 			<header className={styles.header}>

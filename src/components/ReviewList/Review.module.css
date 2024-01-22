@@ -6,7 +6,7 @@
 	max-width: 41.5rem;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1200px) {
 	.reviewContainer {
 		flex-direction: column;
 		gap: 0.75rem;
