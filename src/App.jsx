@@ -45,14 +45,22 @@ function App() {
 		'': 'Customer reviews',
 	}
 
+	let itemData = {
+		name: 'Fall Limited Edition Sneakers',
+		price: finalPrice,
+		count: itemCount,
+		thumbnail: assetsBaseUrl + 'image-product-1-thumbnail.jpg',
+	}
+
 	const addToCart = (item) => {
 		if (item.count <= 0) {
-			return
+			return false
 		}
 		if (cart.some((cartItem) => cartItem.name == item.name)) {
-			return
+			return false
 		}
 		setCart([...cart, item])
+		return true
 	}
 
 	return (
@@ -88,14 +96,11 @@ function App() {
 					<div className={styles.addToCartContainer}>
 						<Counter count={itemCount} setCount={setItemCount} />
 						<button
-							onClick={() =>
-								addToCart({
-									name: 'Fall Limited Edition Sneakers',
-									price: finalPrice,
-									count: itemCount,
-									thumbnail: assetsBaseUrl + 'image-product-1-thumbnail.jpg',
-								})
-							}>
+							onClick={() => {
+								if (addToCart(itemData)) {
+									setItemCount(0)
+								}
+							}}>
 							<img
 								style={{ width: '1rem', userSelect: 'none' }}
 								src={CartIconWhite}
@@ -127,6 +132,7 @@ function App() {
 					/>
 				) : (
 					<ReviewList
+						assetsBaseUrl={assetsBaseUrl}
 						reviews={reviews}
 						setReviews={setReviews}
 						currentUser={currentUser}

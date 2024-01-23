@@ -4,6 +4,7 @@ import Stars from '../Stars/Stars'
 import { useState } from 'react'
 
 const Review = ({
+	assetsBaseUrl,
 	reviewData,
 	deleteReview,
 	setWritingReview,
@@ -13,7 +14,10 @@ const Review = ({
 
 	return (
 		<li className={styles.reviewContainer}>
-			<img src={ProfilePlaceholder} />
+			{(isFromCurrentUser && (
+				<img width="48px" src={assetsBaseUrl + currentUser.profileImage} />
+			)) || <img src={ProfilePlaceholder} />}
+
 			<div className={styles.details}>
 				<div className={styles.controls}>
 					<h1>{reviewData.user}</h1>
