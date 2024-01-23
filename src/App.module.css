@@ -1,19 +1,30 @@
 .productSection {
 	display: flex;
 	padding-inline: 12.5vw;
-	margin-bottom: 4.8rem;
+	margin-block: 4.8rem;
+	gap: 8rem;
 }
 
-.productSection .carouselContainer {
-	width: 50%;
+.productSection > div {
+	width: 100%;
+}
+
+.carouselLarge {
+	display: block !important;
+}
+
+.carouselSmall {
+	display: none !important;
+}
+
+.detailsContainer {
+	margin-block: auto;
+	height: 100%;
 }
 
 .productDetails {
 	width: 100%;
 	max-width: 28rem;
-
-	height: 100%;
-	margin-block: auto;
 }
 
 .productDetails h5 {
@@ -58,15 +69,21 @@
 
 .priceContainer {
 	display: flex;
+	flex-direction: column;
+	margin-bottom: 2rem;
+}
+
+.priceRow {
+	display: flex;
 	align-items: start;
 	gap: 1.4rem;
 }
 
-.priceContainer .price {
+.priceRow .price {
 	font-size: 1.75rem;
 }
 
-.priceContainer .discount {
+.priceRow .discount {
 	padding: 0.25rem 0.55rem;
 	border-radius: 0.375rem;
 
@@ -136,6 +153,8 @@
 	font-weight: 700;
 	line-height: 3rem;
 	margin-bottom: 2rem;
+
+	min-width: 50%;
 }
 
 .writeReviewButton {
@@ -147,9 +166,13 @@
 	font-weight: 700;
 
 	padding: 0.85rem 4rem;
-	margin-left: auto;
+	margin-inline: auto;
 
 	cursor: pointer;
+}
+
+.writeReviewButton:disabled {
+	opacity: 0.5;
 }
 
 .writeReviewButton .longText {
@@ -160,7 +183,26 @@
 	display: none;
 }
 
+@media screen and (max-width: 1000px) {
+	.productSection {
+		margin-top: 0;
+	}
+
+	.carouselLarge {
+		display: none !important;
+	}
+
+	.carouselSmall {
+		display: flex !important;
+	}
+}
+
 @media screen and (max-width: 1200px) {
+	.productSection {
+		gap: 1rem;
+		max-width: 100%;
+	}
+
 	.productSection {
 		flex-direction: column;
 		padding-inline: 0;
@@ -169,6 +211,12 @@
 	.productDetails {
 		padding-inline: 1.5rem;
 		max-width: 98%;
+	}
+
+	.priceContainer {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	.reviewSection {
@@ -180,6 +228,8 @@
 	}
 
 	.writeReviewButton {
+		margin-inline: 0;
+		margin-left: auto;
 		padding-inline: 2rem;
 	}
 

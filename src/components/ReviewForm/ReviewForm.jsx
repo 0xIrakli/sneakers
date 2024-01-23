@@ -6,11 +6,10 @@ import styles from './ReviewForm.module.css'
 const schema = object({
 	starRating: number().min(1, 'Please select a star rating'),
 	headline: string()
-		.min(2, 'Minimum 2 characters')
-		.max(60, 'Maximum 60 characters')
+		.min(4, 'Minimum 4 characters')
 		.required('Please enter your headline'),
 	writtenReview: string()
-		.max(250, 'Maximum 250 characters')
+		.min(15, 'Minimum 15 characters')
 		.required('Please enter your written review'),
 })
 

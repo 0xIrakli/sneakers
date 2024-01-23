@@ -29,6 +29,7 @@
 
 	position: absolute;
 	translate: -50% 6%;
+	z-index: 1;
 
 	display: flex;
 	flex-direction: column;

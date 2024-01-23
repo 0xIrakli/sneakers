@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './App.module.css'
 import Header from './components/Header/Header'
 import ReviewForm from './components/ReviewForm/ReviewForm'
@@ -7,7 +7,7 @@ import { product, currentUser, assetsBaseUrl } from './data'
 import CartIconWhite from './assets/icon-cart-white.svg'
 // import CartIcon from './assets/icon-cart.svg'
 import Counter from './components/Counter/Counter'
-// import Carousel from './components/Carousel/Carousel'
+import Carousel from './components/Carousel/Carousel'
 import Stars from './components/Stars/Stars'
 
 // const CartIconWhite = () => {
@@ -22,6 +22,10 @@ import Stars from './components/Stars/Stars'
 // 	)
 // }
 
+const sum = (arr) => {
+	return arr.reduce((partialSum, a) => partialSum + a, 0)
+}
+
 function App() {
 	const [cart, setCart] = useState([
 		{
@@ -35,11 +39,20 @@ function App() {
 	const [reviews, setReviews] = useState(product.reviews)
 	const [writingReview, setWritingReview] = useState('') //'new' 'editing' or ''
 	const [itemCount, setItemCount] = useState(0)
+
 	const productPrice = 250
 	const productDiscount = 0.5
 	const finalPrice = productPrice * (1 - productDiscount)
 
-	let headlines = {
+	const getAverageRating = () => {
+		return sum(reviews.map((review) => review.starRating)) / reviews.length
+	}
+
+	const currentUserHasReview = reviews.some(
+		(review) => review.user == currentUser.name
+	)
+
+	const headlines = {
 		new: 'Write a review',
 		editing: 'Edit your review',
 		'': 'Customer reviews',
@@ -63,64 +76,85 @@ function App() {
 		return true
 	}
 
+	const AddToCartBtn = () => (
+		<button
+			onClick={() => {
+				if (addToCart(itemData)) {
+					setItemCount(0)
+				}
+			}}>
+			<img style={{ width: '1rem', userSelect: 'none' }} src={CartIconWhite} />
+			Add to cart
+		</button>
+	)
+
+	// bevri kodi gamodis App.jsx shi magram aqedan funqciebis da componentebis gatana sxva filebshi
+	// arminda radgan sxva adgilshi ver gamoiyeneba vercerti
 	return (
 		<>
 			<Header cart={cart} setCart={setCart} currentUser={currentUser} />
 			<section className={styles.productSection}>
 				<div className={styles.carouselContainer}>
-					{/* <Carousel
+					<Carousel
+						className={styles.carouselLarge}
 						assetsBaseUrl={assetsBaseUrl}
 						images={product.images}
 						type="large"
-					/> */}
+					/>
+					<Carousel
+						className={styles.carouselSmall}
+						assetsBaseUrl={assetsBaseUrl}
+						images={product.images}
+						type="small"
+					/>
 				</div>
-				<div className={styles.productDetails}>
-					<h5>Sneaker Company</h5>
-					<h1>Fall Limited Edition Sneakers</h1>
-					<div className={styles.starsContainer}>
-						<Stars count={4} starSize="1.4rem" starGap="0.28rem" />
-						<p>4.2 out of 5</p>
-					</div>
-					<p>
-						These low-profile sneakers are your perfect casual wear companion.
-						Featuring a durable rubber outer sole, they'll withstand everything
-						the weather can offer.
-					</p>
-					<div className={styles.priceContainer}>
-						<h1 className={styles.price}>${finalPrice.toFixed(2)}</h1>
-						<span className={styles.discount}>{100 * productDiscount}%</span>
-					</div>
-					{productDiscount > 0 && (
-						<p className={styles.originalPrice}>${productPrice.toFixed(2)}</p>
-					)}
-					<div className={styles.addToCartContainer}>
-						<Counter count={itemCount} setCount={setItemCount} />
-						<button
-							onClick={() => {
-								if (addToCart(itemData)) {
-									setItemCount(0)
-								}
-							}}>
-							<img
-								style={{ width: '1rem', userSelect: 'none' }}
-								src={CartIconWhite}
+				<div className={styles.detailsContainer}>
+					<div className={styles.productDetails}>
+						<h5>Sneaker Company</h5>
+						<h1>Fall Limited Edition Sneakers</h1>
+						<div className={styles.starsContainer}>
+							<Stars
+								count={Math.round(getAverageRating())}
+								starSize="1.4rem"
+								starGap="0.28rem"
 							/>
-							Add to cart
-						</button>
+							<p>{getAverageRating().toFixed(1)} out of 5</p>
+						</div>
+						<p>
+							These low-profile sneakers are your perfect casual wear companion.
+							Featuring a durable rubber outer sole, they'll withstand
+							everything the weather can offer.
+						</p>
+						<div className={styles.priceContainer}>
+							<div className={styles.priceRow}>
+								<h1 className={styles.price}>${finalPrice.toFixed(2)}</h1>
+								<span className={styles.discount}>
+									{100 * productDiscount}%
+								</span>
+							</div>
+							{productDiscount > 0 && (
+								<p className={styles.originalPrice}>
+									${productPrice.toFixed(2)}
+								</p>
+							)}
+						</div>
+						<div className={styles.addToCartContainer}>
+							<Counter count={itemCount} setCount={setItemCount} />
+							<AddToCartBtn />
+						</div>
 					</div>
 				</div>
 			</section>
 			<section className={styles.reviewSection}>
 				<div>
 					<h1>{headlines[writingReview]}</h1>
-					{!reviews.some((review) => review.user == currentUser.name) && (
-						<button
-							onClick={() => setWritingReview('new')}
-							className={styles.writeReviewButton}>
-							<span className={styles.longText}>Write a Review</span>
-							<span className={styles.shortText}>Add</span>
-						</button>
-					)}
+					<button
+						onClick={() => setWritingReview('new')}
+						className={styles.writeReviewButton}
+						disabled={currentUserHasReview}>
+						<span className={styles.longText}>Write a Review</span>
+						<span className={styles.shortText}>Add</span>
+					</button>
 				</div>
 				{writingReview !== '' ? (
 					<ReviewForm

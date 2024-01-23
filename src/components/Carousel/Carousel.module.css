@@ -1,0 +1,94 @@
+.container {
+	max-width: 36rem;
+	margin-right: auto;
+}
+
+.mainContainer {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	overflow: hidden;
+
+	border-radius: 0.9375rem;
+
+	margin-bottom: 2rem;
+}
+
+.mainContainer > img:nth-child(1) {
+	margin-left: calc(var(--index) * -100%);
+}
+
+.mainContainer img {
+	width: 100%;
+	transition: 0.6s ease;
+}
+
+.selectorContainer {
+	width: 100%;
+
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.selectorContainer button {
+	background: transparent;
+
+	border: 2px solid transparent;
+	border-radius: 0.625rem;
+	overflow: hidden;
+
+	cursor: pointer;
+
+	transition: 0.2s;
+}
+
+.selectorContainer img {
+	width: 100%;
+}
+
+.selectorContainer button.selected {
+	border: 2px solid var(--primary);
+}
+
+.selected img:hover {
+	opacity: 0.4;
+}
+
+.selected img {
+	opacity: 0.4;
+}
+
+.carouselSmall {
+	display: relative;
+	border-radius: 0;
+}
+
+.carouselSmall .controls {
+	position: absolute;
+
+	width: 3rem;
+	height: 3rem;
+
+	background-color: white;
+	border: none;
+	border-radius: 50%;
+}
+
+.carouselSmall .icon {
+	resize: none;
+	margin: auto;
+	width: 0.7rem;
+}
+
+.prevButton {
+	left: 1rem;
+}
+
+.nextButton {
+	right: 1rem;
+}
+
+.carouselSmall > button:disabled {
+	opacity: 0.5;
+}

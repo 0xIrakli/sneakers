@@ -46,6 +46,9 @@ const Stars = ({
 	const editable = setCount !== null
 
 	const [drawCount, setDrawCount] = useState(count)
+	useEffect(() => {
+		setDrawCount(count)
+	}, [count])
 
 	return (
 		<div
